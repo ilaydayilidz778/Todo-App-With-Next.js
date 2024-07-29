@@ -15,7 +15,7 @@ const DeleteTodo = ({ todo }: { todo: todoProps }) => {
                     type='submit'
                     text={<FaTrash size="20" />}
                     actionButton
-                    bgColor='bg-red-400'></Button>
+                    bgColor='bg-orange-700'></Button>
             </Form>
         </div>
     );

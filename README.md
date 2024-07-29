@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todo Uygulaması
 
-## Getting Started
+Bu proje, [Next.js](https://nextjs.org/), [MongoDB](https://www.mongodb.com/) ve [Prisma](https://www.prisma.io/) kullanılarak geliştirilmiş bir "To Do" uygulamasıdır.. Uygulama, todo listelerinizi oluşturmanıza, düzenlemenize ve silmenize olanak tanır.
 
-First, run the development server:
+## Teknolojiler
+Bu proje şunları kullanır:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js: React uygulamaları için bir framework.
+Tailwind CSS: Hızlı ve özelleştirilebilir CSS framework'ü.
+Prisma: Modern bir ORM (Object-Relational Mapping) aracı.
+MongoDB: NoSQL veritabanı.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Başlarken
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Geliştirme sunucusunu başlatmak için aşağıdaki adımları takip edin:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Projeyi klonlayın:
 
-## Learn More
+    ```bash
+    git clone https://github.com/ilaydayilidz778/Todo-App-With-Next.js
+    cd Todo-App-With-Next.js
+  
+2. Gerekli bağımlılıkları yükleyin:
+    npm install
+    # veya
+    yarn install
+    # veya
+    pnpm install
+    # veya
+    bun install
 
-To learn more about Next.js, take a look at the following resources:
+3. Geliştirme sunucusunu başlatın:
+    npm run dev
+    # veya
+    yarn dev
+    # veya
+    pnpm dev
+    # veya
+    bun dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Tarayıcınızda http://localhost:3000 adresini açarak uygulamanızı görüntüleyebilirsiniz.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Uygulama Sayfa Görüntüleri
+Uygulamanın görüntüleri aşağıda verilmiştir:
 
-## Deploy on Vercel
+Ana Sayfa
+(public/images/screenshots/Home_Page.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Todo Ekleme
+(public/images/screenshots/Create_Action.png)
+(public/images/screenshots/Create_Complete_Action.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Todo Düzenleme
+(public/images/screenshots/Edit_Action.png)
+(public/images/screenshots/Edit_Completed_Action.png)
+
+Todo Silme
+(public/images/screenshots/Delete_Action.png)
+
+## Katkıda Bulunma
+Katkılarınız varsa, lütfen bir Pull Request oluşturun!
