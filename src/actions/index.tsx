@@ -64,14 +64,21 @@ export async function editTodo(formData: FormData) {
 
 
 export async function deleteTodo(formData: FormData) {
-    const neTitle = formData.get('newTitle') as string;
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
     const inputId = formData.get('inputId') as string;
 
-    await prisma.todo.delete({
-        where: {
-            id: inputId,
-        }
+    const response = await fetch(`${baseURL}/api/deleteTodo`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ inputId }),
     });
+
+    if (!response.ok) {
+        throw new Error('Failed to delete todo');
+    }
 
     revalidatePath("/");
 };
