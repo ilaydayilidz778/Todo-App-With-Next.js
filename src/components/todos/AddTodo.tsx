@@ -3,8 +3,6 @@ import Form from '../form/Form';
 import Input from '../input/Input';
 import Button from '../button/Button';
 import * as actions from '@/actions';
-import { MdExposurePlus1, MdPlusOne } from 'react-icons/md';
-import { FaPlus } from 'react-icons/fa';
 
 const AddTodo = () => {
     return (

@@ -3,18 +3,27 @@ import { prisma } from "@/utils/prisma"
 import { revalidatePath } from "next/cache";
 
 export async function createTodo(formData: FormData) {
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
     const input = formData.get('input') as string;
     if (!input.trim()) {
         return;
     }
-    await prisma.todo.create({
-        data: {
-            title: input,
+
+    const response = await fetch(`${baseURL}/api/createTodo`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ input }),
     });
 
+    if (!response.ok) {
+        throw new Error('Failed to create todo');
+    }
+
     revalidatePath("/");
-};
+}
 
 export async function changeStatus(formData: FormData) {
     const inputId = formData.get('inputId') as string;
