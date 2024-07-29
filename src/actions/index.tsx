@@ -1,5 +1,4 @@
 "use server";
-import { prisma } from "@/utils/prisma"
 import { revalidatePath } from "next/cache";
 
 export async function createTodo(formData: FormData) {
@@ -26,38 +25,43 @@ export async function createTodo(formData: FormData) {
 }
 
 export async function changeStatus(formData: FormData) {
-    const inputId = formData.get('inputId') as string;
-    const todo = await prisma.todo.findUnique({
-        where: {
-            id: inputId
-        },
-    });
-    const updateStatus = !todo?.isComplateed;
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
-    await prisma.todo.update({
-        where: {
-            id: inputId,
+    const inputId = formData.get('inputId') as string;
+
+    const response = await fetch(`${baseURL}/api/changeStatus`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
-        data: {
-            isComplateed: updateStatus
-        },
+        body: JSON.stringify({ inputId }),
     });
+
+    if (!response.ok) {
+        throw new Error('Failed to update todo status');
+    }
 
     revalidatePath("/");
 };
 
-export async function editTodo(formData: FormData) {
-    const newTitle = formData.get('newTitle') as string;
-    const inputId = formData.get('inputId') as string;
 
-    await prisma.todo.update({
-        where: {
-            id: inputId,
+export async function editTodo(formData: FormData) {
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+    const inputId = formData.get('inputId') as string;
+    const newTitle = formData.get('newTitle') as string;
+
+    const response = await fetch(`${baseURL}/api/editTodo`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
-        data: {
-            title: newTitle
-        },
+        body: JSON.stringify({ inputId, newTitle }),
     });
+
+    if (!response.ok) {
+        throw new Error('Failed to update todo');
+    }
 
     revalidatePath("/");
 };

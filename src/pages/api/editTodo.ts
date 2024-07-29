@@ -6,6 +6,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const newTitle = req.body.newTitle as string;
         const inputId = req.body.inputId as string;
 
+        if (!newTitle || !inputId) {
+            return res.status(400).json({ error: 'Invalid input' });
+        }
+
         await prisma.todo.update({
             where: {
                 id: inputId,
